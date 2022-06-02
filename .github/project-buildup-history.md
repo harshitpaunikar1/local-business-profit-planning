@@ -16,3 +16,7 @@
 
 - Task summary: After stepping away for a bit, came back and the output formatting looked messy when printed, so added a cleaner display block.
 - Deliverable: Wrapped it up properly this time.
+## 2022-06-02 - Day 1: Problem discovery start
+
+- Task summary: Ended up revisiting this in the evening — ran the whole thing end to end again after a fresh look. Caught a stale import that broke the flow.
+- Deliverable: One of those satisfying small wins.
