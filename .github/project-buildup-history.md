@@ -12,3 +12,7 @@
 
 - Task summary: Noticed something off from this morning — cleaned up the cell ordering in the notebook so it reads top to bottom without jumping around.
 - Deliverable: Good enough to not be embarrassing.
+## 2022-06-02 - Day 1: Problem discovery start
+
+- Task summary: After stepping away for a bit, came back and the output formatting looked messy when printed, so added a cleaner display block.
+- Deliverable: Wrapped it up properly this time.
