@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profit Planning for a Neighborhood Operator</title>
+  <meta name="description" content="A workbook-style guide to small-business profit planning through pricing, inventory, promotions, and scenario decisions.">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --paper: #f5f5f5;
+      --text: #111111;
+      --muted: #555555;
+      --soft: #888888;
+      --line: #111111;
+      --rule: #dddddd;
+      --panel: #f0f0f0;
+      --ink: #0a0a0a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    p {
+      margin: 0 0 1rem;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.05;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+
+    code, pre, .mono {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+    }
+
+    .page {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .cover {
+      border: 1.5px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+      padding: 1.2rem 1.2rem 1.4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover::after {
+      content: "";
+      position: absolute;
+      inset: 1rem;
+      border: 1px solid var(--rule);
+      pointer-events: none;
+    }
+
+    .cover-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stamp {
+      border: 1px solid var(--line);
+      padding: 0.45rem 0.7rem;
+      font-size: 0.76rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      background: #ffffff;
+    }
+
+    .revision {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .cover-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(280px, 0.9fr);
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .title-block h1 {
+      font-size: clamp(2.6rem, 5vw, 5rem);
+      max-width: 12ch;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: -0.05em;
+    }
+
+    .deck {
+      font-size: 1.15rem;
+      max-width: 54ch;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .opening {
+      max-width: 65ch;
+      font-size: 1.02rem;
+    }
+
+    .cover-sheet {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      padding: 1rem;
+      display: grid;
+      gap: 1rem;
+      align-self: start;
+    }
+
+    .cover-sheet h2 {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.7rem;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .checklist div {
+      display: grid;
+      grid-template-columns: 1.1rem 1fr;
+      gap: 0.7rem;
+      align-items: start;
+    }
+
+    .tick {
+      width: 1.1rem;
+      height: 1.1rem;
+      border: 1px solid var(--line);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      line-height: 1;
+      background: var(--ink);
+      color: #f5f5f5;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .metric-card {
+      border-top: 2px solid var(--line);
+      padding-top: 0.8rem;
+    }
+
+    .metric-card span {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .metric-card strong {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin: 1rem 0 2.25rem;
+    }
+
+    .tabs a {
+      border: 1px solid var(--line);
+      padding: 0.8rem 0.9rem;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      background: #ffffff;
+    }
+
+    .tabs a:hover,
+    .tabs a:focus-visible {
+      background: var(--ink);
+      color: #f5f5f5;
+      outline: none;
+    }
+
+    .workbook {
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .sheet {
+      border: 1.5px solid var(--line);
+      background: #ffffff;
+      padding: 2rem 1.5rem 1.6rem;
+      position: relative;
+    }
+
+    .sheet::before {
+      content: attr(data-tab);
+      position: absolute;
+      top: -1.05rem;
+      left: 1rem;
+      background: var(--ink);
+      color: #f5f5f5;
+      padding: 0.65rem 0.9rem 0.55rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 1px solid var(--line);
+    }
+
+    .sheet-head {
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 1.4rem;
+      align-items: end;
+    }
+
+    .sheet-no {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .sheet-head h2 {
+      font-size: clamp(1.7rem, 3.4vw, 2.85rem);
+      letter-spacing: -0.04em;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .sheet-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.8fr);
+      gap: 1.5rem;
+    }
+
+    .sheet-grid.tight {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .note-box,
+    .calc-box,
+    .mini-panel,
+    .table-wrap {
+      border: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .note-box,
+    .mini-panel {
+      padding: 1rem;
+    }
+
+    .note-box h3,
+    .mini-panel h3,
+    .calc-box h3 {
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+
+    .calc-box {
+      margin: 1.2rem 0;
+      background: #ffffff;
+    }
+
+    .calc-box header {
+      padding: 0.95rem 1rem;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .calc-box .body {
+      padding: 1rem;
+    }
+
+    .calc-rows {
+      display: grid;
+      gap: 0.65rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .calc-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      font-size: 0.95rem;
+      align-items: baseline;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .calc-row strong {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.94rem;
+    }
+
+    .calc-foot {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .diagram {
+      margin: 1.5rem 0 1.2rem;
+      border: 1px solid var(--line);
+      padding: 1rem;
+      background: #ffffff;
+    }
+
+    .diagram svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    figcaption {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+    }
+
+    figcaption em {
+      font-style: italic;
+    }
+
+    .ratio-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0 1.3rem;
+    }
+
+    .ratio-strip .mini-panel strong {
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0 1.25rem;
+      background: #ffffff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 620px;
+    }
+
+    th,
+    td {
+      padding: 0.85rem 0.9rem;
+      border-bottom: 1px solid var(--rule);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      background: var(--paper);
+    }
+
+    .dark-code {
+      margin: 1rem 0 1.25rem;
+      background: #111111;
+      color: #f5f5f5;
+      padding: 1rem;
+      overflow-x: auto;
+      border: 1px solid #111111;
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    .decision-list,
+    .plain-list {
+      margin: 0;
+      padding-left: 1.1rem;
+    }
+
+    .decision-list li,
+    .plain-list li {
+      margin-bottom: 0.75rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .closing {
+      border-top: 2px solid var(--line);
+      padding-top: 1rem;
+      margin-top: 1rem;
+      font-size: 1.02rem;
+    }
+
+    .footer-note {
+      margin-top: 2rem;
+      border-top: 1px solid var(--rule);
+      padding-top: 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+      .cover-grid,
+      .sheet-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-row,
+      .tabs,
+      .ratio-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .sheet-head {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 1rem 0.8rem 3rem;
+      }
+
+      .cover,
+      .sheet {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .metric-row,
+      .tabs,
+      .ratio-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .sheet::before {
+        position: static;
+        display: inline-block;
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="cover">
+      <div class="cover-top">
+        <div class="stamp">Neighborhood Operator Workbook</div>
+        <div class="revision">Field Revision 01</div>
+      </div>
+      <div class="cover-grid">
+        <div class="title-block">
+          <h1>Profit planning starts after the sales number.</h1>
+          <p class="deck">A corner shop rarely needs a lecture about growth. It needs a cleaner view of margin, faster inventory discipline, and promotions that stop pretending volume is profit.</p>
+          <div class="opening">
+            <p>When I sit with a local operator, the first line is usually some version of, "Sales are moving, so why does cash still feel tight?" That is the right question. Gross revenue can look healthy while profit is bleeding out through low-contribution items, lazy reorder habits, and discounts that make the till ring without making the business sturdier.</p>
+            <p>This workbook treats profit planning as a sequence of operating choices, not as an inspirational business story. We will start from the baseline economics of a typical neighborhood retail shop, then move through pricing, inventory, promotion, and scenario planning with numbers that are simple enough to use and strict enough to expose wishful thinking.</p>
+          </div>
+        </div>
+        <aside class="cover-sheet">
+          <h2>What this workbook is for</h2>
+          <div class="checklist">
+            <div><span class="tick">x</span><span>Separate busy days from profitable days.</span></div>
+            <div><span class="tick">x</span><span>Find which products deserve a price change and which are traffic magnets.</span></div>
+            <div><span class="tick">x</span><span>Reduce cash stuck in shelves without creating fresh stockouts.</span></div>
+            <div><span class="tick">x</span><span>Judge promotions by contribution and basket lift, not by footfall alone.</span></div>
+          </div>
+        </aside>
+      </div>
+      <div class="metric-row">
+        <div class="metric-card"><span>Example weekly sales</span><strong>INR 2,40,000</strong></div>
+        <div class="metric-card"><span>Operating profit</span><strong>INR 24,000</strong></div>
+        <div class="metric-card"><span>Inventory on hand</span><strong>INR 5,10,000</strong></div>
+        <div class="metric-card"><span>Slow stock trapped</span><strong>INR 92,000</strong></div>
+      </div>
+    </header>
+
+    <nav class="tabs" aria-label="Workbook sections">
+      <a href="#baseline">Baseline sheet</a>
+      <a href="#pricing">Price discipline</a>
+      <a href="#inventory">Inventory turns</a>
+      <a href="#promotion">Promotion logic</a>
+      <a href="#scenario">Scenario board</a>
+    </nav>
+
+    <main class="workbook">
+      <section class="sheet" id="baseline" data-tab="Worksheet A">
+        <div class="sheet-head">
+          <div class="sheet-no">01 / Baseline Economics</div>
+          <h2>Build the margin ledger before touching anything else.</h2>
+        </div>
+        <div class="sheet-grid">
+          <div>
+            <p>Most small-business planning starts too high up the income statement. Owners watch revenue, maybe gross margin percent, and then jump straight to, "Should I run another offer?" That skips the uncomfortable middle. The real diagnostic layer is contribution by item group, then the fixed and semi-variable costs that sit underneath it. If that middle layer is foggy, every decision that follows gets theatrical.</p>
+            <p>For a neighborhood operator, I want one sheet that answers four questions immediately. How much money came in? How much of it was given back through returns, shrink, or unrecorded discounts? How much margin did the sold mix actually create? And after wages, occupancy, and transaction costs, what was left that week to build reserves, service debt, or pay the owner properly?</p>
+            <p>The trap here is averaging everything. A store can report a 33 percent gross margin and still be weak because the products generating volume are not the products carrying the business. A basket full of convenience staples feels safe, but if the margin mix is thin and reorder cycles are lazy, the operator becomes a financier for inventory rather than a collector of profit.</p>
+
+            <div class="ratio-strip">
+              <div class="mini-panel">
+                <strong>33%</strong>
+                <div>Gross margin on the total week. Useful, but too blunt to guide action.</div>
+              </div>
+              <div class="mini-panel">
+                <strong>10%</strong>
+                <div>Operating profit after wages, rent, delivery, spoilage, and payment leakage.</div>
+              </div>
+              <div class="mini-panel">
+                <strong>23 days</strong>
+                <div>Inventory cover on hand. This is where cash often goes to sleep.</div>
+              </div>
+            </div>
+
+            <div class="calc-box">
+              <header><h3>Baseline test</h3></header>
+              <div class="body">
+                <div class="calc-rows">
+                  <div class="calc-row"><span>Net sales after returns and shrink</span><strong>INR 2,34,000</strong></div>
+                  <div class="calc-row"><span>Gross margin after landed product cost</span><strong>INR 78,000</strong></div>
+                  <div class="calc-row"><span>Operating costs for the week</span><strong>INR 54,000</strong></div>
+                  <div class="calc-row"><span>Operating profit before owner draw</span><strong>INR 24,000</strong></div>
+                </div>
+                <p class="calc-foot">If weekly revenue falls by just 6 percent without a matching reduction in cost, this example drops below INR 10,000 in operating profit. Small operators do not have the luxury of vague planning.</p>
+              </div>
+            </div>
+
+            <p>That is why I prefer a margin ledger instead of a pretty dashboard. A ledger forces subtraction. It shows that each layer has a job: sales generate room, contribution keeps that room from collapsing, and cost discipline decides whether the operator has any strategic freedom left at the bottom. If the bottom line is thin, price and reorder choices matter more than another burst of promotional noise.</p>
+          </div>
+          <aside>
+            <div class="note-box">
+              <h3>Common baseline mistakes</h3>
+              <ul class="decision-list">
+                <li>Counting supplier rebates as if they repair a bad margin mix. They do not.</li>
+                <li>Using purchase price instead of landed cost. Freight, damage, and spoilage belong in the same frame.</li>
+                <li>Measuring inventory in units only. Cash tied up matters more than shelf count.</li>
+              </ul>
+            </div>
+            <div class="note-box" style="margin-top: 1rem;">
+              <h3>Useful weekly inputs</h3>
+              <ul class="plain-list">
+                <li>POS line items by SKU and hour.</li>
+                <li>Vendor invoices with landed cost by batch.</li>
+                <li>Returns, breakage, and markdown logs.</li>
+                <li>Labor roster and payment-fee totals.</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+
+        <figure class="diagram">
+          <svg viewBox="0 0 940 720" role="img" aria-labelledby="ledger-title ledger-desc">
+            <title id="ledger-title">Margin ledger from revenue to weekly operating profit</title>
+            <desc id="ledger-desc">A stepped ledger showing how revenue becomes profit after returns, cost of goods, labor, occupancy, and operating leakage are removed.</desc>
+            <rect x="40" y="40" width="860" height="640" fill="#ffffff" stroke="#111111" stroke-width="1.5"/>
+            <text x="70" y="82" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="24" font-weight="700" fill="#111111">Weekly margin ledger</text>
+            <text x="70" y="112" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14" fill="#555555">Example for a neighborhood retail operator with moderate spoilage and mixed-margin categories.</text>
+
+            <rect x="70" y="145" width="490" height="72" fill="#f5f5f5" stroke="#111111" stroke-width="1.2"/>
+            <text x="95" y="187" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="22" font-weight="700" fill="#111111">Gross sales</text>
+            <text x="545" y="187" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="22" fill="#111111">INR 2,40,000</text>
+
+            <line x1="565" y1="181" x2="620" y2="181" stroke="#111111" stroke-width="1.2" marker-end="url(#arrow)"/>
+            <text x="645" y="168" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" fill="#555555">Sales volume looks healthy</text>
+            <text x="645" y="188" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" fill="#555555">but tells you nothing about cash quality.</text>
+
+            <rect x="110" y="237" width="450" height="72" fill="#ffffff" stroke="#111111" stroke-width="1.2"/>
+            <text x="135" y="269" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="17" font-weight="600" fill="#111111">Less returns, breakage,</text>
+            <text x="135" y="291" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="17" font-weight="600" fill="#111111">and unplanned discounts</text>
+            <text x="545" y="281" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="20" fill="#111111">- INR 6,000</text>
+
+            <rect x="150" y="329" width="410" height="72" fill="#f0f0f0" stroke="#111111" stroke-width="1.2"/>
+            <text x="175" y="371" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="22" font-weight="700" fill="#111111">Net sales</text>
+            <text x="545" y="371" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="22" fill="#111111">INR 2,34,000</text>
+
+            <rect x="190" y="421" width="370" height="72" fill="#ffffff" stroke="#111111" stroke-width="1.2"/>
+            <text x="215" y="463" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="16" font-weight="600" fill="#111111">Less landed product cost</text>
+            <text x="545" y="463" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="16" fill="#111111">- INR 1,56,000</text>
+
+            <rect x="230" y="513" width="330" height="72" fill="#f5f5f5" stroke="#111111" stroke-width="1.2"/>
+            <text x="255" y="555" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="22" font-weight="700" fill="#111111">Gross margin</text>
+            <text x="545" y="555" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="22" fill="#111111">INR 78,000</text>
+
+            <rect x="565" y="250" width="270" height="42" fill="#ffffff" stroke="#111111" stroke-width="1.2"/>
+            <text x="585" y="277" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14" fill="#111111">Wages and coverage</text>
+            <text x="817" y="277" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="14" fill="#111111">- INR 24,000</text>
+
+            <rect x="565" y="307" width="270" height="42" fill="#ffffff" stroke="#111111" stroke-width="1.2"/>
+            <text x="585" y="334" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14" fill="#111111">Rent and utilities</text>
+            <text x="817" y="334" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="14" fill="#111111">- INR 18,000</text>
+
+            <rect x="565" y="364" width="270" height="42" fill="#ffffff" stroke="#111111" stroke-width="1.2"/>
+            <text x="585" y="391" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14" fill="#111111">Fees, spoilage, delivery</text>
+            <text x="817" y="391" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="14" fill="#111111">- INR 12,000</text>
+
+            <line x1="565" y1="455" x2="835" y2="455" stroke="#111111" stroke-width="1.2"/>
+            <rect x="565" y="478" width="270" height="78" fill="#111111" stroke="#111111" stroke-width="1.2"/>
+            <text x="585" y="514" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="17" font-weight="700" fill="#f5f5f5">Operating profit</text>
+            <text x="817" y="514" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="17" fill="#f5f5f5">INR 24,000</text>
+            <text x="585" y="540" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" fill="#dddddd">Roughly 10 percent of net sales.</text>
+            <text x="585" y="556" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" fill="#dddddd">Thin enough that one bad cycle hurts.</text>
+
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#111111"/>
+              </marker>
+            </defs>
+          </svg>
+          <figcaption><em>The ledger is the control surface.</em> Revenue matters, but the operator gets real freedom only after cost layers are pulled apart and the weekly profit residue is visible.</figcaption>
+        </figure>
+      </section>
+
+      <section class="sheet" id="pricing" data-tab="Worksheet B">
+        <div class="sheet-head">
+          <div class="sheet-no">02 / Price Discipline</div>
+          <h2>Raise prices where contribution is weak and loyalty is stronger than habit.</h2>
+        </div>
+        <div class="sheet-grid">
+          <div>
+            <p>Price work goes wrong when owners frame it as a single percentage decision. "Everything up by 3 percent" sounds tidy and usually does more harm than good. Local operators do not sell a uniform catalog. They sell anchors, convenience items, occasional indulgences, and a long tail of products customers barely notice until they need them. Those categories should not be priced with the same nerve.</p>
+            <p>I split the shelf into three practical groups. First come the known-value items: staples that customers compare quickly and remember accurately. Second are convenience fillers: products people add because they are already in the store. Third is the neglected tail: seasonal or occasional items where price errors sit quietly for months. Price discipline is mostly about leaving the first group alone unless the market moves, tightening the second, and cleaning up the third with an unsentimental eye.</p>
+            <p>The core measure is contribution per unit, not margin percent in isolation. A 40 percent margin on a slow item can still be less useful than a 14 percent margin on a dependable traffic product. What matters is the contribution stream that a SKU creates across the week, relative to the shelf space and working capital it consumes.</p>
+
+            <div class="calc-box">
+              <header><h3>Illustrative price move</h3></header>
+              <div class="body">
+                <div class="calc-rows">
+                  <div class="calc-row"><span>Detergent 1L at INR 118, 140 units, landed cost INR 84</span><strong>INR 4,760 contribution</strong></div>
+                  <div class="calc-row"><span>Same item at INR 124, 134 units after a mild demand drop</span><strong>INR 5,360 contribution</strong></div>
+                  <div class="calc-row"><span>Net weekly gain from a six-rupee increase</span><strong>INR 600</strong></div>
+                </div>
+                <p class="calc-foot">This is the kind of change owners avoid because the volume dip is visible immediately. The extra contribution is quieter, but it is the healthier signal.</p>
+              </div>
+            </div>
+
+            <p>A second mistake is pricing from supplier invoices alone. Landed cost is the real base: purchase price, freight, packing loss, breakage, and any routine markdowns required to move old stock. If the base cost is wrong, the confidence around the selling price is fake. That is why the first analytical cut I want is not a fancy model. It is a clean rollup of units, realized selling price, and true cost by SKU over a recent period.</p>
+
+            <pre class="dark-code"><code>WITH sku_week AS (
+  SELECT
+    sku,
+    SUM(quantity) AS units,
+    SUM(quantity * sell_price) AS revenue,
+    SUM(quantity * landed_cost) AS cogs
+  FROM sales_line_items
+  WHERE sale_date &gt;= CURRENT_DATE - INTERVAL '28 days'
+  GROUP BY sku
+)
+SELECT
+  sku,
+  units,
+  ROUND(revenue / NULLIF(units, 0), 2) AS avg_sell_price,
+  ROUND((revenue - cogs) / NULLIF(units, 0), 2) AS contribution_per_unit,
+  ROUND(revenue - cogs, 2) AS total_contribution
+FROM sku_week
+ORDER BY total_contribution DESC; -- Rank the products that actually fund the shop</code></pre>
+
+            <p>That query is not glamorous, and that is the point. Small-business pricing gets better when the operator can see which items fund wages, which merely create movement, and which look respectable only because they have been hiding inside aggregated averages. Once that list is visible, pricing stops feeling emotional and starts behaving like maintenance.</p>
+          </div>
+          <aside>
+            <div class="note-box">
+              <h3>Price choices I usually reject</h3>
+              <ul class="decision-list">
+                <li>Blanket discounts tied to festival periods without checking whether the items already sell through.</li>
+                <li>Matching a nearby chain on every staple even when the neighborhood shop is winning on convenience, not absolute price.</li>
+                <li>Keeping old prices out of politeness after vendor costs have moved materially.</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="sheet" id="inventory" data-tab="Worksheet C">
+        <div class="sheet-head">
+          <div class="sheet-no">03 / Inventory Turns</div>
+          <h2>Inventory is where profit turns into furniture if nobody is strict.</h2>
+        </div>
+        <div class="sheet-grid">
+          <div>
+            <p>Most neighborhood operators do not go broke because demand disappeared overnight. They go broke more slowly, by storing too much of the wrong stock while telling themselves they are staying safe. Safety stock is necessary. Comfortable overstock is not. The difference is discipline.</p>
+            <p>I like to translate inventory into weeks of cover and then into cash. The minute you say, "We are carrying twenty-three days of stock and INR 92,000 of it has not moved in five weeks," the discussion changes. Dead stock stops looking prudent. It starts looking like trapped optionality: money that could have been used for faster lines, maintenance, or simply breathing room.</p>
+            <p>Reordering should be mechanical enough to prevent panic buying and flexible enough to respect case-pack realities. If a snack line sells nine units a day and the lead time is four days, the operator does not need a mystical forecast. The operator needs a reorder point, a safety buffer, and a rule for how much to buy once the threshold is crossed.</p>
+
+            <pre class="dark-code"><code>def weekly_plan(avg_daily_units, lead_days, safety_days, case_pack, on_hand, on_order):
+    reorder_point = avg_daily_units * (lead_days + safety_days)
+    inventory_position = on_hand + on_order
+
+    if inventory_position &lt;= reorder_point:
+        target_stock = reorder_point + (avg_daily_units * 7)
+        needed_units = target_stock - inventory_position
+        order_qty = ((needed_units + case_pack - 1) // case_pack) * case_pack  # round up to supplier pack size
+    else:
+        order_qty = 0
+
+    return reorder_point, order_qty</code></pre>
+
+            <p>That tiny function captures the spirit of the planning model. Reorder logic should not depend on who had the strongest intuition that morning. It should depend on observed movement, replenishment delay, and the risk tolerance of the operator. Then, once a week, someone reviews the exceptions rather than reinventing the rules from scratch.</p>
+            <p>The hard part is not the formula. The hard part is admitting that some lines deserve less shelf presence, some deserve deeper buys, and some should leave entirely. Owners often keep stale inventory because discontinuation feels like surrender. Usually it is the opposite. Cutting slow stock is how a small shop gets its agility back.</p>
+          </div>
+          <aside>
+            <div class="note-box">
+              <h3>Inventory signals worth watching</h3>
+              <ul class="plain-list">
+                <li>Days of cover by category, not just store-wide.</li>
+                <li>Units sold in the last 7, 14, and 28 days.</li>
+                <li>Items bought twice before the earlier batch moved meaningfully.</li>
+                <li>Markdowns required to clear aging stock.</li>
+              </ul>
+            </div>
+            <div class="mini-panel" style="margin-top: 1rem;">
+              <h3>Owner rule of thumb</h3>
+              <p>If you cannot explain why an item deserves that much cash on the shelf, it probably does not.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="sheet" id="promotion" data-tab="Worksheet D">
+        <div class="sheet-head">
+          <div class="sheet-no">04 / Promotion Logic</div>
+          <h2>Promotion should buy basket quality, not just shop noise.</h2>
+        </div>
+        <div class="sheet-grid">
+          <div>
+            <p>Promotions are where operators most often confuse activity with progress. A discount can make the store feel lively and still leave the weekly ledger weaker. The reason is simple: many local offers are designed backwards. They start with a visible price cut and only later ask whether the discounted item attracted incremental baskets, larger baskets, or merely lower revenue from people who already intended to buy.</p>
+            <p>Good promotion planning begins with the role of the item. Is it a traffic driver? A basket builder? A margin carrier that should be protected? A clearance line that is tying up too much cash? Once those roles are clear, the promotion changes. Traffic drivers can be discounted lightly if nearby items hold margin. Clearance items can be discounted hard, but only if the objective is explicit: free the cash and move on. Margin carriers should almost never be volunteered into broad offers just because they are popular.</p>
+            <p>I also prefer short promotion windows with a clean post-mortem. Seven disciplined days tell you more than a month of fuzzy discounting. Did unit volume rise? Did the basket expand? Did adjacent categories benefit? Did the operator simply teach regular customers to wait for a lower price? Those are the questions that keep promotion honest.</p>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Promotion type</th>
+                    <th>Use it when</th>
+                    <th>What to measure</th>
+                    <th>What usually goes wrong</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Light staple discount</td>
+                    <td>You need traffic and the basket has strong attached items.</td>
+                    <td>Basket size, attach rate, contribution after halo items.</td>
+                    <td>The operator counts footfall and ignores the diluted mix.</td>
+                  </tr>
+                  <tr>
+                    <td>Bundle offer</td>
+                    <td>You can pair a known-value line with a stronger-margin companion.</td>
+                    <td>Bundle take rate and blended contribution.</td>
+                    <td>The bundle uses two low-margin items and pretends the combo is strategic.</td>
+                  </tr>
+                  <tr>
+                    <td>Clearance markdown</td>
+                    <td>Cash is stuck in aging stock with weak repeat demand.</td>
+                    <td>Cash recovered and days of cover reduced.</td>
+                    <td>The markdown is too timid, so the inventory lingers anyway.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>The habit I push hardest against is running the same offer because it felt successful last season. Seasonality matters, but memory is a poor analytics system. Promotions deserve the same scrutiny as pricing changes: specific intent, a defined measurement window, and a clear decision afterward. Keep, revise, or stop. The operator who never stops anything gradually converts the shop into a museum of inherited tactics.</p>
+          </div>
+          <aside>
+            <div class="note-box">
+              <h3>Promotion filter</h3>
+              <ul class="decision-list">
+                <li>If the discounted line already sells out, do not discount it.</li>
+                <li>If the offer depends on vague spillover, define the companion categories in advance.</li>
+                <li>If the promotion is meant to clear stock, be honest and price it to clear.</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="sheet" id="scenario" data-tab="Worksheet E">
+        <div class="sheet-head">
+          <div class="sheet-no">05 / Scenario Decisions</div>
+          <h2>Put price and reorder choices on the same board so tradeoffs stay visible.</h2>
+        </div>
+        <div class="sheet-grid tight">
+          <div>
+            <p>Planning becomes useful when the operator can compare a few disciplined futures instead of improvising every week. I want a compact scenario board that combines price moves and replenishment behavior, because those decisions interact. Raising price on the right SKUs improves contribution. Tightening reorder rules releases cash. Doing both, carefully, can widen operating profit without demanding unrealistic sales growth.</p>
+            <p>What I do not want is a model that hides behind precision. Neighborhood operators rarely need twenty scenarios. They need four or five strong ones with assumptions written plainly enough that someone else in the business can challenge them. If the assumptions are opaque, the scenario is decoration.</p>
+          </div>
+        </div>
+
+        <figure class="diagram">
+          <svg viewBox="0 0 980 560" role="img" aria-labelledby="scenario-title scenario-desc">
+            <title id="scenario-title">Scenario board comparing price and reorder strategies</title>
+            <desc id="scenario-desc">A four-column scenario board showing weekly profit, cash tied in inventory, stockout risk, and the decision focus for current, price-only, reorder-only, and combined strategies.</desc>
+            <rect x="30" y="30" width="920" height="500" fill="#ffffff" stroke="#111111" stroke-width="1.5"/>
+            <text x="60" y="75" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="24" font-weight="700" fill="#111111">Scenario board</text>
+            <text x="60" y="104" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14" fill="#555555">Four operator choices mapped to weekly profit and cash coverage.</text>
+
+            <!-- Label column (no fill box, just text area x=45–170) -->
+            <!-- Data columns -->
+            <rect x="170" y="135" width="160" height="320" fill="#f5f5f5" stroke="#111111" stroke-width="1.2"/>
+            <rect x="340" y="135" width="160" height="320" fill="#ffffff" stroke="#111111" stroke-width="1.2"/>
+            <rect x="510" y="135" width="160" height="320" fill="#ffffff" stroke="#111111" stroke-width="1.2"/>
+            <rect x="680" y="135" width="210" height="320" fill="#111111" stroke="#111111" stroke-width="1.2"/>
+
+            <text x="250" y="170" text-anchor="middle" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="17" font-weight="700" fill="#111111">Current</text>
+            <text x="420" y="170" text-anchor="middle" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="17" font-weight="700" fill="#111111">Price repair</text>
+            <text x="590" y="170" text-anchor="middle" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="17" font-weight="700" fill="#111111">Reorder repair</text>
+            <text x="785" y="170" text-anchor="middle" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="17" font-weight="700" fill="#f5f5f5">Combined move</text>
+
+            <!-- Row labels in dedicated label area -->
+            <g font-family="IBM Plex Sans, system-ui, sans-serif" font-size="13" fill="#555555">
+              <text x="55" y="215">Action</text>
+              <text x="55" y="282">Weekly profit</text>
+              <text x="55" y="349">Inventory cash</text>
+              <text x="55" y="412">Risk profile</text>
+            </g>
+
+            <g font-family="IBM Plex Sans, system-ui, sans-serif" font-size="14">
+              <text x="250" y="215" text-anchor="middle" fill="#111111">No change</text>
+              <text x="420" y="215" text-anchor="middle" fill="#111111">6 SKU increases</text>
+              <text x="590" y="215" text-anchor="middle" fill="#111111">23 to 16 days cover</text>
+              <text x="785" y="215" text-anchor="middle" fill="#f5f5f5">Both together</text>
+
+              <text x="250" y="282" text-anchor="middle" fill="#111111">INR 24,000</text>
+              <text x="420" y="282" text-anchor="middle" fill="#111111">INR 31,000</text>
+              <text x="590" y="282" text-anchor="middle" fill="#111111">INR 29,000</text>
+              <text x="785" y="282" text-anchor="middle" fill="#f5f5f5">INR 37,000</text>
+
+              <text x="250" y="349" text-anchor="middle" fill="#111111">INR 5,10,000</text>
+              <text x="420" y="349" text-anchor="middle" fill="#111111">INR 5,00,000</text>
+              <text x="590" y="349" text-anchor="middle" fill="#111111">INR 4,30,000</text>
+              <text x="785" y="349" text-anchor="middle" fill="#f5f5f5">INR 4,20,000</text>
+
+              <text x="250" y="405" text-anchor="middle" fill="#111111">Thin profit,</text>
+              <text x="250" y="422" text-anchor="middle" fill="#111111">sleepy cash</text>
+              <text x="420" y="405" text-anchor="middle" fill="#111111">Customer reaction</text>
+              <text x="420" y="422" text-anchor="middle" fill="#111111">to watch</text>
+              <text x="590" y="405" text-anchor="middle" fill="#111111">Stockout discipline</text>
+              <text x="590" y="422" text-anchor="middle" fill="#111111">required</text>
+              <text x="785" y="405" text-anchor="middle" fill="#f5f5f5">Best upside with</text>
+              <text x="785" y="422" text-anchor="middle" fill="#f5f5f5">weekly review</text>
+            </g>
+
+            <line x1="170" y1="240" x2="890" y2="240" stroke="#dddddd" stroke-width="1"/>
+            <line x1="170" y1="307" x2="890" y2="307" stroke="#dddddd" stroke-width="1"/>
+            <line x1="170" y1="374" x2="890" y2="374" stroke="#dddddd" stroke-width="1"/>
+
+            <path d="M785 470 C785 445, 785 445, 785 435" fill="none" stroke="#f5f5f5" stroke-width="1.5" marker-end="url(#scenario-arrow)"/>
+            <text x="680" y="488" font-family="IBM Plex Sans, system-ui, sans-serif" font-size="12" fill="#555555">Run with weekly exception review.</text>
+
+            <defs>
+              <marker id="scenario-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L9,3 z" fill="#f5f5f5"/>
+              </marker>
+            </defs>
+          </svg>
+          <figcaption><em>The scenario board forces tradeoffs into the open.</em> The best-looking profit case is only credible if the team also accepts the tighter buying discipline that makes the cash release real.</figcaption>
+        </figure>
+
+        <div class="two-col">
+          <div class="note-box">
+            <h3>How I would run this weekly</h3>
+            <ul class="plain-list">
+              <li>Monday: review last week by category, not just store total.</li>
+              <li>Tuesday: approve price changes on a narrow SKU list.</li>
+              <li>Thursday: place orders from reorder exceptions, not from habit.</li>
+              <li>Weekend close: log promotion effect and retire weak offers fast.</li>
+            </ul>
+          </div>
+          <div class="note-box">
+            <h3>What deserves escalation</h3>
+            <ul class="plain-list">
+              <li>Margin compression without a matching traffic gain.</li>
+              <li>Inventory cover rising while sales remain flat.</li>
+              <li>Promotions that lift units but not contribution.</li>
+              <li>Fast-moving lines repeatedly hitting emergency replenishment.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="closing">
+          <p>Small-business profit planning is not a hunt for the perfect spreadsheet. It is a habit of forcing each weekly choice to answer the same blunt question: does this improve contribution, release cash, or protect a line that genuinely earns its place? If the answer is no, the operator is probably just keeping busy. Busy shops impress visitors. Disciplined shops stay solvent.</p>
+        </div>
+      </section>
+    </main>
+
+    <p class="footer-note">This article is intentionally self-contained. All styling and diagrams live in this file, and the visual system stays inside a black-and-white workbook palette so the argument rests on structure, numbers, and typography rather than decoration.</p>
+  </div>
+</body>
+</html>
