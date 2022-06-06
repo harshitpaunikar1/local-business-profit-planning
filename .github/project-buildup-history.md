@@ -28,3 +28,7 @@
 
 - Task summary: Checked in on the project over the weekend. Ran a few cells, noticed the output was slightly off. Fixed a small rounding issue and re-saved.
 - Deliverable: Minor but worth doing.
+## 2022-06-06 - Day 3: Scope pass
+
+- Task summary: By this point I had the rough direction, so the work became more practical. I spent most of the day trying to decide what belongs in version 1 and what can wait and make the whole thing feel less half baked. The middle part always takes longer than it should, mostly becuase one fix usually reveals two more things to clean up. A good chunk of the day went into making the flow feel believable from a user point of view.
+- Deliverable: I wrapped up the day with feature scope mostly in place. It was not perfect, but it was good enough to keep the project moving. There were still a couple of loose parts, but nothing serious enough to block the next step.
