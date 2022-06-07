@@ -40,3 +40,7 @@
 
 - Task summary: Late-night fix: the output formatting looked messy when printed, so added a cleaner display block.
 - Deliverable: Good enough to not be embarrassing.
+## 2022-06-07 - Day 4: User flow
+
+- Task summary: After stepping away for a bit, came back and wrapped a repeated block in a helper function since it showed up three times.
+- Deliverable: Good enough to not be embarrassing.
