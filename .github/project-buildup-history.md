@@ -12,3 +12,7 @@
 
 - Task summary: The confidence interval calculation was using normal distribution symmetry which is not right for revenue (can't go below zero). Switched to a log-normal model for the lower bound.
 - Deliverable: Revenue confidence intervals corrected with log-normal lower bound.
+## 2024-09-23 - Day 4: Cost structure analysis
+
+- Task summary: Did the cost structure analysis for the Local Business Profit Planning case study. Broke down fixed and variable costs, identified which cost categories scaled with revenue and which were step-function changes at certain business volumes. The biggest insight was that the payroll cost had a step change at the point where a second shift was needed — that inflection point defined a key capacity constraint in the planning model.
+- Deliverable: Fixed vs variable cost breakdown done. Payroll step-function inflection point identified.
