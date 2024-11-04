@@ -16,3 +16,7 @@
 
 - Task summary: Did the cost structure analysis for the Local Business Profit Planning case study. Broke down fixed and variable costs, identified which cost categories scaled with revenue and which were step-function changes at certain business volumes. The biggest insight was that the payroll cost had a step change at the point where a second shift was needed — that inflection point defined a key capacity constraint in the planning model.
 - Deliverable: Fixed vs variable cost breakdown done. Payroll step-function inflection point identified.
+## 2024-11-04 - Day 5: Break-even analysis
+
+- Task summary: Added a break-even analysis to the Local Business Profit Planning case study. Computed break-even revenue for each cost scenario and plotted the margin waterfall chart showing how each cost category reduces profit from gross revenue to net. The waterfall chart made the cost structure much more intuitive than the table version had been. Also computed payback period for the capital investment assumption.
+- Deliverable: Break-even and payback period analysis added. Margin waterfall chart created.
