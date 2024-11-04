@@ -20,3 +20,7 @@
 
 - Task summary: Added a break-even analysis to the Local Business Profit Planning case study. Computed break-even revenue for each cost scenario and plotted the margin waterfall chart showing how each cost category reduces profit from gross revenue to net. The waterfall chart made the cost structure much more intuitive than the table version had been. Also computed payback period for the capital investment assumption.
 - Deliverable: Break-even and payback period analysis added. Margin waterfall chart created.
+## 2024-11-04 - Day 5: Break-even analysis
+
+- Task summary: The waterfall chart logic had an off-by-one error in the cumulative sum calculation — fixed it and the totals now match the individual bars.
+- Deliverable: Waterfall chart cumulative sum error fixed.
