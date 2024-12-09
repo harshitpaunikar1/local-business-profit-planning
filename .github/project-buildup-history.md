@@ -24,3 +24,7 @@
 
 - Task summary: The waterfall chart logic had an off-by-one error in the cumulative sum calculation — fixed it and the totals now match the individual bars.
 - Deliverable: Waterfall chart cumulative sum error fixed.
+## 2024-12-09 - Day 6: Final formatting
+
+- Task summary: Final formatting pass on the Local Business Profit Planning case study. The charts needed consistent color usage — some were using the default matplotlib palette and others had been customized. Standardized everything to a neutral professional palette. Also increased the figure DPI for all charts so they look sharp in the PDF version.
+- Deliverable: Chart color scheme standardized. Figure DPI increased for PDF output.
