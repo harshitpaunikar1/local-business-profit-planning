@@ -28,3 +28,7 @@
 
 - Task summary: Final formatting pass on the Local Business Profit Planning case study. The charts needed consistent color usage — some were using the default matplotlib palette and others had been customized. Standardized everything to a neutral professional palette. Also increased the figure DPI for all charts so they look sharp in the PDF version.
 - Deliverable: Chart color scheme standardized. Figure DPI increased for PDF output.
+## 2024-12-09 - Day 6: Final formatting
+
+- Task summary: Exported the final PDF and checked every page — caught one chart that was getting clipped at the page boundary. Fixed the figure size.
+- Deliverable: PDF export verified. Clipped chart fixed.
