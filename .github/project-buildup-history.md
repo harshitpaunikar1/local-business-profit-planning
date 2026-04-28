@@ -14,7 +14,7 @@
 - Deliverable: Revenue confidence intervals corrected with log-normal lower bound.
 ## 2024-09-23 - Day 4: Cost structure analysis
 
-- Task summary: Did the cost structure analysis for the Local Business Profit Planning case study. Broke down fixed and variable costs, identified which cost categories scaled with revenue and which were step-function changes at certain business volumes. The biggest insight was that the payroll cost had a step change at the point where a second shift was needed — that inflection point defined a key capacity constraint in the planning model.
+- Task summary: Did the cost structure analysis for the Local Business Profit Planning case study. Broke down fixed and variable costs, identified which cost categories scaled with revenue and which were step-function changes at certain business volumes. The biggest insight was that the payroll cost had a step change at the point where a second shift was needed - that inflection point defined a key capacity constraint in the planning model.
 - Deliverable: Fixed vs variable cost breakdown done. Payroll step-function inflection point identified.
 ## 2024-11-04 - Day 5: Break-even analysis
 
@@ -22,13 +22,13 @@
 - Deliverable: Break-even and payback period analysis added. Margin waterfall chart created.
 ## 2024-11-04 - Day 5: Break-even analysis
 
-- Task summary: The waterfall chart logic had an off-by-one error in the cumulative sum calculation — fixed it and the totals now match the individual bars.
+- Task summary: The waterfall chart logic had an off-by-one error in the cumulative sum calculation - fixed it and the totals now match the individual bars.
 - Deliverable: Waterfall chart cumulative sum error fixed.
 ## 2024-12-09 - Day 6: Final formatting
 
-- Task summary: Final formatting pass on the Local Business Profit Planning case study. The charts needed consistent color usage — some were using the default matplotlib palette and others had been customized. Standardized everything to a neutral professional palette. Also increased the figure DPI for all charts so they look sharp in the PDF version.
+- Task summary: Final formatting pass on the Local Business Profit Planning case study. The charts needed consistent color usage - some were using the default matplotlib palette and others had been customized. Standardized everything to a neutral professional palette. Also increased the figure DPI for all charts so they look sharp in the PDF version.
 - Deliverable: Chart color scheme standardized. Figure DPI increased for PDF output.
 ## 2024-12-09 - Day 6: Final formatting
 
-- Task summary: Exported the final PDF and checked every page — caught one chart that was getting clipped at the page boundary. Fixed the figure size.
+- Task summary: Exported the final PDF and checked every page - caught one chart that was getting clipped at the page boundary. Fixed the figure size.
 - Deliverable: PDF export verified. Clipped chart fixed.
